@@ -24,8 +24,8 @@ export default async function Home() {
               />
             </div>
             <div className="column is-4 has-text-centered-mobile">
-              <h2 className="title">Hildor</h2>
-              <h5 className="subtitle">Front-end engineer</h5>
+              <h1 className="title">Hildor</h1>
+              <h2 className="subtitle">Front-end engineer</h2>
               <p>
                 🎓 Bachelor&apos;s in Information Systems
                 <br />
@@ -95,7 +95,7 @@ export default async function Home() {
         <div className="container">
           <div className="columns is-centered">
             <div className="column is-8">
-              <h2 className="title has-text-centered">About me</h2>
+              <h3 className="title has-text-centered">About me</h3>
               <div className="content has-text-justified">
                 <p>
                   Bachelor in Information Systems graduated from the Pontifical
@@ -123,7 +123,7 @@ export default async function Home() {
                   </a>
                 </p>
               </div>
-              <h2 className="title has-text-centered mt-6">Projects</h2>
+              <h3 className="title has-text-centered mt-6">Projects</h3>
               <div className="columns is-multiline">
                 {githubData.map((p: any) => {
                   return (

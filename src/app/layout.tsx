@@ -4,9 +4,9 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   themeColor: "black",
-  title: "Hildor | Front-end engineer",
+  title: "Hildor Júnior | Senior Front-end Engineer",
   description:
-    "Desenvolvimento de sites, sistemas, blogs, aplicativos e manutenção de sistemas.",
+    "Development and maintenance of websites, mobile apps, systems, blogs and applications.",
   category: "technology",
   viewport: {
     width: "device-width",
@@ -22,9 +22,9 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: "Hildor | Front-end engineer",
+    title: "Hildor Júnior | Senior Front-end Engineer",
     description:
-      "Desenvolvimento de sites, sistemas, blogs, aplicativos e manutenção de sistemas.",
+      "Development and maintenance of websites, mobile apps, systems, blogs and applications.",
     url: "https://hildor.dev",
     siteName: "Hildor",
     images: [
@@ -38,7 +38,7 @@ export const metadata: Metadata = {
     type: "website",
   },
   robots: {
-    index: false,
+    index: true,
     follow: true,
     nocache: true,
     googleBot: {
