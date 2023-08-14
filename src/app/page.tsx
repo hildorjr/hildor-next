@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Script from "next/script";
 
-export async function getGithubData() {
+async function getGithubData() {
   const github = await fetch("https://api.github.com/users/hildorjr/repos");
   return github.json();
 }
