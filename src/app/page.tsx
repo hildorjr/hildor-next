@@ -37,11 +37,11 @@ export default async function Home() {
                     <i className="fa fa-rss-square"></i>
                   </span>
                 </a>
-                <a target="_blank" href="mailto:oi@hildor.com.br">
+                {/* <a target="_blank" href="mailto:oi@hildor.com.br">
                   <span className="icon">
                     <i className="fas fa-envelope"></i>
                   </span>
-                </a>
+                </a> */}
                 <a
                   target="_blank"
                   href="https://github.com/hildorjr"
@@ -206,12 +206,12 @@ export default async function Home() {
             </span>
             Blog
           </a>
-          <a target="_blank" href="mailto:oi@hildor.com.br">
+          {/* <a target="_blank" href="mailto:oi@hildor.com.br">
             <span className="icon">
               <i className="fas fa-envelope"></i>
             </span>
             E-mail
-          </a>
+          </a> */}
           <a
             target="_blank"
             href="https://github.com/hildorjr"
