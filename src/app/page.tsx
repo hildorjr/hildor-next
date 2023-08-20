@@ -18,8 +18,8 @@ export default async function Home() {
                 src="/profile.jpg"
                 alt="Hildor"
                 className="profile is-rounded"
-                width={500}
-                height={500}
+                width={300}
+                height={300}
                 priority={true}
               />
             </div>
@@ -65,10 +65,7 @@ export default async function Home() {
           </div>
         </div>
       </section>
-      <section
-        className="section has-background-light projects-section"
-        id="projects"
-      >
+      <section className="section projects-section" id="projects">
         <div className="shape-divider">
           <svg
             data-name="Layer 1"
