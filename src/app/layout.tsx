@@ -1,3 +1,4 @@
+import Script from "next/script";
 import { lora, open_sans } from "./fonts";
 import "./globals.scss";
 import type { Metadata } from "next";
@@ -61,6 +62,17 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${lora.variable} ${open_sans.variable}`}>
         {children}
+        {/* Google Analytics */}
+        <Script
+          async
+          src="https://www.googletagmanager.com/gtag/js?id=UA-54463958-2"
+        ></Script>
+        {/* Font Awesome */}
+        <Script
+          src="https://kit.fontawesome.com/2796ccc163.js"
+          crossOrigin="anonymous"
+          strategy="lazyOnload"
+        ></Script>
       </body>
     </html>
   );
