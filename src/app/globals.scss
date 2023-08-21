@@ -1,48 +1,35 @@
+// Variables
+$primary-color: #042d4e;
+$light-primary-color: lighten($primary-color, 10%);
+$lightest-primary-color: lighten($primary-color, 80%);
+$text-color: lighten($primary-color, 75%);
+
+// Import Bulma styles
 @import '../../node_modules/bulma/bulma.sass';
 
-// $primary-color: #2e044e;
-$primary-color: #042d4e;
-
+// Global styles
 * {
   font-family: var(--font-open-sans);
 }
 
-.custom-cursor {
-  background-color: hsl(0, 79%, 72%);
-  box-shadow: 0 0 10px hsl(0, 79%, 72%);
-  opacity: .5;
-
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 1;
-  transition: .2s;
-}
-
-h1, h2, h3, h4, h5, h6, p, a, button, .card {
-  z-index: 2;
-  position: relative;
-}
-
+// Elements with fade transition animation
 p, a, img, .title, .subtitle, .card, .animated-column {
-  animation-name: fade-transition;
-  animation-duration: .6s;
-  animation-fill-mode: forwards;
+  animation: fade-transition .6s forwards;
   opacity: 0;
 }
 
+// Sections
 .section {
   position: relative;
 }
 
+// Paragraph styles
 p {
   font-size: 18px;
   animation-delay: .6s;
 }
 
+// Link styles
 a {
   display: inline-block;
   transition: 1s;
@@ -51,23 +38,27 @@ a {
   color: $primary-color;
 }
 
+// Icon styles
 i {
   transition: .4s;
   opacity: .5;
 }
 
+// Opacity 1 class
 .op-1 {
   opacity: 1;
 }
 
+// Profile image styles
 .profile {
   height: auto;
   width: 250px;
   border-radius: 30px;
   animation-delay: 0s;
-  box-shadow: 0 2px 4px rgba(lighten($primary-color, 20%),0.5);
+  border: 2px solid rgba(lighten($primary-color, 20%), 0.5);
 }
 
+// Shape divider styles
 .shape-divider {
   position: absolute;
   top: 0;
@@ -83,6 +74,7 @@ i {
   }
 }
 
+// Title styles
 .title {
   color: #333;
   font-family: var(--font-lora);
@@ -90,12 +82,52 @@ i {
   animation-delay: .2s;
 }
 
+// Subtitle styles
 .subtitle {
   animation-delay: .4s;
 }
 
+// Custom cursor
+.mouse-trailer {
+  background: invert($primary-color);
+  box-shadow: 0 0 100px invert($primary-color);
+  width: 500px;
+  height: 500px;
+  border-radius: 50%;
+  position: fixed;
+  transform: translateX(-50%) translateY(-50%);
+  top: 0;
+  left: 50%;
+  z-index: 1;
+  pointer-events: none;
+  transition: opacity .5s ease;
+  opacity: 0;
+}
+body:hover > .mouse-trailer {
+  opacity: .15;
+}
+
+// Elements with position and z-index
+h1, h2, h3, h4, h5, h6, p, a, button, .card, .column {
+  z-index: 2;
+  position: relative;
+}
+
+// Transitions and animations
+@keyframes fade-transition {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+}
+
+// Main section
 .main-section {
-  background: linear-gradient(lighten($primary-color, 10%), $primary-color);
+  background: linear-gradient($light-primary-color, $primary-color);
   .title {
     color: lighten($primary-color, 70%);
   }
@@ -115,10 +147,16 @@ i {
   }
 }
 
+// Projects section
 .projects-section {
-  background-color: lighten($primary-color, 80%);
-  position: relative;
+  background-color: $lightest-primary-color;
   padding-top: 200px;
+  .title {
+    margin-top: 100px;
+    &:first-child {
+      margin-top: 0;
+    }
+  }
   .animated-column {
     @for $i from 1 through 20 {
       &:nth-child(#{$i}) {
@@ -126,11 +164,13 @@ i {
       }
     }
   }
-  .card {
+  .post-card, .github-card {
     border-radius: 20px;
     height: 100%;
-    padding-bottom: 48px;
-    .card-header {
+    transition: .4s ease-in-out;
+    box-shadow: 0 0 0 1px rgba($primary-color, 0);
+
+    .card-header, .card-image, img {
       border-radius: 20px 20px 0 0;
       box-shadow: none;
     }
@@ -141,7 +181,14 @@ i {
     }
     .card-content {
       padding: 1rem 1.5rem;
+      font-weight: 400;
     }
+    &:hover {
+      box-shadow: 0 0 0 1px rgba($primary-color, 1);
+    }
+  }
+  .github-card {
+    padding-bottom: 48px;
     .card-footer {
       position: absolute;
       bottom: 0;
@@ -158,12 +205,13 @@ i {
   }
 }
 
+// Footer
 .footer {
-  background: linear-gradient(lighten($primary-color, 10%), $primary-color);
+  background: linear-gradient($light-primary-color, $primary-color);
   padding-top: 200px;
   position: relative;
   * {
-    color: lighten($primary-color, 75%);
+    color: $text-color;
   }
   .footer-links {
     display: flex;
@@ -188,17 +236,6 @@ i {
   }
   .shape-divider .shape-fill {
     fill: lighten($primary-color, 80%);
-  }
-}
-
-@keyframes fade-transition {
-  from {
-    opacity: 0;
-    transform: translateY(-10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0px);
   }
 }
 
