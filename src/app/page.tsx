@@ -11,7 +11,7 @@ function HeaderSection() {
         <div className="columns is-centered">
           <div className="column is-3 has-text-right has-text-centered-mobile">
             <Image
-              src="/profile.jpg"
+              src="/images/profile.jpg"
               alt="Hildor"
               className="profile is-rounded"
               width={300}

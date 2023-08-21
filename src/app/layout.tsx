@@ -14,12 +14,12 @@ export const metadata: Metadata = {
     initialScale: 1,
   },
   icons: {
-    icon: "/android-chrome-192x192.png",
-    shortcut: "/android-chrome-512x512.png",
-    apple: "/apple-touch-icon.png",
+    icon: "/images/android-chrome-192x192.png",
+    shortcut: "/images/android-chrome-512x512.png",
+    apple: "/images/apple-touch-icon.png",
     other: {
       rel: "apple-touch-icon-precomposed",
-      url: "/apple-touch-icon.png",
+      url: "/images/apple-touch-icon.png",
     },
   },
   openGraph: {
@@ -60,6 +60,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <head>
+        <link rel="icon" href="/images/favicon.ico" sizes="any" />
+      </head>
       <body className={`${lora.variable} ${open_sans.variable}`}>
         {children}
         {/* Google Analytics */}
