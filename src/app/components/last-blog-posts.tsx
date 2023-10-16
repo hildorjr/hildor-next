@@ -1,6 +1,6 @@
-import Image from "next/image";
-import dayjs from "dayjs";
-import relativeTime from "dayjs/plugin/relativeTime";
+import Image from 'next/image';
+import dayjs from 'dayjs';
+import relativeTime from 'dayjs/plugin/relativeTime';
 
 dayjs.extend(relativeTime);
 
@@ -28,11 +28,11 @@ async function getPosts() {
       }
     }
   `;
-  const response = await fetch("https://api.hashnode.com/", {
-    method: "POST",
+  const response = await fetch('https://api.hashnode.com/', {
+    method: 'POST',
     headers: {
-      "Content-Type": "application/json",
-      Authorization: process.env.HASHNODE_TOKEN || "",
+      'Content-Type': 'application/json',
+      Authorization: process.env.HASHNODE_TOKEN || '',
     },
     body: JSON.stringify({
       query,
@@ -49,41 +49,27 @@ interface BlogPostProps {
 
 function BlogPost({ post }: BlogPostProps) {
   return (
-    <div className="column is-6">
-      <a
-        className="card post-card"
-        target="_blank"
-        href={`https://blog.hildor.dev/${post.slug}`}
-      >
-        <div className="card-image">
-          <figure className="image">
-            <Image
-              src={post.coverImage}
-              alt={post.title}
-              width={400}
-              height={200}
-            />
+    <a className='post-card' target='_blank' href={`https://blog.hildor.dev/${post.slug}`}>
+      <div className='columns'>
+        <div className='column is-4'>
+          <figure className='image post-image'>
+            <Image src={post.coverImage} alt={post.title} fill />
           </figure>
         </div>
-        <div className="card-header">
-          <h2 className="card-header-title">{post.title}</h2>
-        </div>
-        <div className="card-content">
-          <div className="content">
-            {post.brief}
-            <b>Read more</b>
-            <div className="mt-3 has-text-right">
-              <time dateTime={post.dateAdded}>
-                <span className="icon">
-                  <i className="fas fa-clock"></i>
-                </span>
-                {dayjs(post.dateAdded).fromNow()}
-              </time>
-            </div>
+        <div className='column'>
+          <p className='post-time'>
+            <Image src='/images/profile.jpg' alt='Hildor' width={30} height={30} />
+            <span>Hildor Júnior</span>
+            <span>·</span>
+            <time dateTime={post.dateAdded}>{dayjs(post.dateAdded).format('MMM d, YYYY')}</time>
+          </p>
+          <h2 className='title is-size-4'>{post.title}</h2>
+          <div className='content'>
+            <p>{post.brief}</p>
           </div>
         </div>
-      </a>
-    </div>
+      </div>
+    </a>
   );
 }
 
@@ -92,8 +78,9 @@ export default async function LastBlogPosts() {
   const posts: HashnodePost[] = postsData.data.user.publication.posts || [];
 
   return (
-    <div className="columns is-centered">
-      {posts.slice(0, 1).map((post: HashnodePost) => (
+    <div id='blog'>
+      <h3 className='title has-text-centered'>Blog posts</h3>
+      {posts.map((post: HashnodePost) => (
         <BlogPost key={post.slug} post={post} />
       ))}
     </div>
