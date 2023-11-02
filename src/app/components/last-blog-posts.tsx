@@ -53,7 +53,7 @@ function BlogPost({ post }: BlogPostProps) {
       <div className='columns'>
         <div className='column is-4'>
           <figure className='image post-image'>
-            <Image src={post.coverImage} alt={post.title} fill />
+            <Image src={post.coverImage} alt={post.title} height={200} width={381} />
           </figure>
         </div>
         <div className='column'>
