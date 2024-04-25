@@ -84,11 +84,13 @@ export default async function LastBlogPosts() {
   const posts: any[] = postsData.data?.user.posts.edges || [];
 
   return (
-    <div id='blog'>
-      <h3 className='title has-text-centered'>Blog posts</h3>
-      {posts.map(({ node }: { node: HashnodePost }) => (
-        <BlogPost key={node.slug} post={node} />
-      ))}
+    <div className='columns is-centered' id='blog'>
+      <div className='column is-10'>
+        <h3 className='title has-text-centered'>Blog posts</h3>
+        {posts.map(({ node }: { node: HashnodePost }) => (
+          <BlogPost key={node.slug} post={node} />
+        ))}
+      </div>
     </div>
   );
 }
