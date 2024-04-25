@@ -8,27 +8,33 @@ interface HashnodePost {
   slug: string;
   title: string;
   brief: string;
-  coverImage: string;
-  dateAdded: string;
+  coverImage: {
+    url: string;
+  };
+  publishedAt: string;
 }
 
 async function getPosts() {
   const query = `
     {
       user(username: "hildor") {
-        publication {
-          posts(page: 0) {
-            slug
-            title
-            brief
-            coverImage
-            dateAdded
+        posts(page: 1, pageSize: 10) {
+          edges {
+            node {
+              slug
+              title
+              brief
+              coverImage {
+                url
+              }
+              publishedAt
+            }
           }
         }
       }
     }
   `;
-  const response = await fetch('https://api.hashnode.com/', {
+  const response = await fetch('https://gql.hashnode.com/', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -53,7 +59,7 @@ function BlogPost({ post }: BlogPostProps) {
       <div className='columns'>
         <div className='column is-4'>
           <figure className='image post-image'>
-            <Image src={post.coverImage} alt={post.title} height={200} width={381} />
+            <Image src={post.coverImage.url} alt={post.title} height={200} width={381} />
           </figure>
         </div>
         <div className='column'>
@@ -61,7 +67,7 @@ function BlogPost({ post }: BlogPostProps) {
             <Image src='/images/profile.jpg' alt='Hildor' width={30} height={30} />
             <span>Hildor Júnior</span>
             <span>·</span>
-            <time dateTime={post.dateAdded}>{dayjs(post.dateAdded).format('MMM d, YYYY')}</time>
+            <time dateTime={post.publishedAt}>{dayjs(post.publishedAt).format('MMM d, YYYY')}</time>
           </p>
           <h2 className='title is-size-4'>{post.title}</h2>
           <div className='content'>
@@ -75,13 +81,13 @@ function BlogPost({ post }: BlogPostProps) {
 
 export default async function LastBlogPosts() {
   const postsData = await getPosts();
-  const posts: HashnodePost[] = postsData.data?.user.publication.posts || [];
+  const posts: any[] = postsData.data?.user.posts.edges || [];
 
   return (
     <div id='blog'>
       <h3 className='title has-text-centered'>Blog posts</h3>
-      {posts.map((post: HashnodePost) => (
-        <BlogPost key={post.slug} post={post} />
+      {posts.map(({ node }: { node: HashnodePost }) => (
+        <BlogPost key={node.slug} post={node} />
       ))}
     </div>
   );
