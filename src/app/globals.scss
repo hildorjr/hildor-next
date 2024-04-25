@@ -117,7 +117,7 @@ i {
 // Shape divider styles
 .shape-divider {
   position: absolute;
-  top: 0;
+  top: -1px;
   left: 0;
   width: 100%;
   overflow: hidden;
@@ -207,7 +207,6 @@ h1, h2, h3, h4, h5, h6, p, a, button, .card, .column {
 .projects-section {
   background-color: $lightest-primary-color;
   padding-top: 100px;
-  top: -2px;
   h3.title {
     padding-top: 100px;
   }
