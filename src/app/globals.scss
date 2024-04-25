@@ -1,7 +1,7 @@
 // Variables
-$primary-color: #042d4e;
+$primary-color: #195f6d;
 $light-primary-color: lighten($primary-color, 10%);
-$lightest-primary-color: lighten($primary-color, 80%);
+$lightest-primary-color: lighten($primary-color, 65%);
 $text-color: lighten($primary-color, 75%);
 $dark-color: #333333;
 $light-color: #555555;
@@ -50,19 +50,46 @@ a {
 
 // Navbar
 .navbar {
+  transition: .2s;
   * {
     animation-delay: 0s;
-    transition: 0s;
+    transition: .2s;
   }
-  .navbar-brand .navbar-item {
-    font-family: var(--font-lora);
-    font-size: 25px;
-    color: $primary-color;
-  } 
+  &.is-transparent {
+    background: none;
+  }
+  &::before {
+    content: "";
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 101vh;
+    max-height: 0vh;
+    background-color: rgba(0,0,0, 0.7);
+  }
+  &.is-mobile-open {
+    touch-action: none;
+    &::before {
+      min-height: 101vh;
+    }
+    .navbar-menu {
+      background: none;
+      box-shadow: none;
+    }
+  }
+  .button {
+    width: 100%;
+    font-weight: 400;
+    border-radius: 0.75rem;
+  }
   @media screen and (min-width: 1024px) {
     .navbar-start {
       justify-content: center;
       width: 100%;
+    }
+    .button {
+      width: auto;
     }
   }
 }   

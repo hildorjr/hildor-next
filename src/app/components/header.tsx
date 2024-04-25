@@ -3,7 +3,7 @@ import Image from 'next/image';
 export default function HeaderSection() {
   return (
     <section className='section main-section'>
-      <div className='container'>
+      <div className='container pt-6'>
         <div className='columns is-centered'>
           <div className='column is-3 has-text-right has-text-centered-mobile'>
             <Image

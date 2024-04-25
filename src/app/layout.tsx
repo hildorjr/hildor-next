@@ -58,7 +58,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <head>
         <link rel='icon' href='/images/favicon.ico' sizes='any' />
       </head>
-      <body className={`${lora.variable} ${open_sans.variable} has-navbar-fixed-top`}>
+      <body className={`${lora.variable} ${open_sans.variable}`}>
         <Navbar />
         {children}
         {/* Google Tag Manager */}

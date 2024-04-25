@@ -75,7 +75,7 @@ function BlogPost({ post }: BlogPostProps) {
 
 export default async function LastBlogPosts() {
   const postsData = await getPosts();
-  const posts: HashnodePost[] = postsData.data.user.publication.posts || [];
+  const posts: HashnodePost[] = postsData.data?.user.publication.posts || [];
 
   return (
     <div id='blog'>
