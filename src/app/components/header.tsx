@@ -17,7 +17,7 @@ export default function HeaderSection() {
           </div>
           <div className='column is-4 has-text-centered-mobile'>
             <h1 className='title'>Hildor</h1>
-            <h2 className='subtitle'>Front-end engineer</h2>
+            <h2 className='subtitle'>Software engineer</h2>
             <p>
               🎓 Bachelor&apos;s in Information Systems
               <br />
