@@ -9,23 +9,24 @@ export default function AboutMe() {
         <h3 className='title has-text-centered'>About me</h3>
         <div className='content'>
           <p>
-            Bachelor in Information Systems graduated from the Pontifical Catholic University of Rio Grande do Sul
-            (PUCRS) in 2020 and postgraduate in Leadership, Innovation and Management also from PUCRS in 2022.
-            <br />
-            <br />
-            With more than {yearsOfExperience} years of experience in the IT market, I had the opportunity to work in the most diverse
-            types of projects and companies from small to large. I was able to work on projects in the financial,
-            banking and logistics sectors, as well as in the field of health and social events.
-            <br />
-            <br />
-            Enthusiastic about new technologies and agile project management, I believe in delivering value in line with
-            the expectations and needs of each client and project.
-            <br />
-            <br />
-            If you want to follow along to know a little more about me and my work{' '}
+            I'm a full-stack developer with {yearsOfExperience} years of experience building software across finance, healthcare, logistics, and social platforms. I've worked with teams of all sizes, from scrappy startups to large enterprises, and I love the challenge of turning complex problems into elegant solutions.
+          </p>
+          <p>
+            I hold a Bachelor's in Information Systems and a postgraduate degree in Leadership, Innovation & Management, both from PUCRS. This foundation, combined with hands-on experience across diverse projects, has shaped my approach to building robust and scalable software.
+          </p>
+          <p>
+            I'm big on agile methodologies and believe the best software comes from truly understanding what people need. Whether it's a small feature or a complete system, I focus on delivering real value.
+          </p>
+          <p>
+            Want to know more about what I'm working on? I share insights, lessons learned, and tech deep-dives on{' '}
             <a target='_blank' href='https://blog.hildor.dev'>
-              check out my blog.
+              my blog
             </a>
+            {' '}and{' '}
+            <a target='_blank' href='https://youtube.com/@hildordev'>
+              YouTube channel
+            </a>
+            . Let's connect!
           </p>
         </div>
       </div>

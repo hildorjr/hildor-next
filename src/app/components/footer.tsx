@@ -10,6 +10,12 @@ export default function Footer() {
     },
     { href: 'https://blog.hildor.dev', label: 'Browse blog posts', icon: 'fa fa-rss-square', text: 'Blog' },
     {
+      href: 'https://youtube.com/@hildordev',
+      label: 'Watch on YouTube',
+      icon: 'fab fa-youtube',
+      text: 'YouTube',
+    },
+    {
       href: 'https://github.com/hildorjr',
       label: 'Follow on Github',
       icon: 'fab fa-github',

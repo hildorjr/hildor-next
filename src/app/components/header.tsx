@@ -39,6 +39,11 @@ export default function HeaderSection() {
                   <i className='fa fa-rss-square'></i>
                 </span>
               </a>
+              <a target='_blank' aria-label='Watch on YouTube' href='https://youtube.com/@hildordev' rel='noreferrer'>
+                <span className='icon'>
+                  <i className='fab fa-youtube'></i>
+                </span>
+              </a>
               <a target='_blank' aria-label='Follow on Github' href='https://github.com/hildorjr' rel='noreferrer'>
                 <span className='icon'>
                   <i className='fab fa-github'></i>
