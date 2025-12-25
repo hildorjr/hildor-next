@@ -3,7 +3,7 @@ import Image from 'next/image';
 export default function HeaderSection() {
   return (
     <section className='section main-section'>
-      <div className='container pt-6'>
+      <div className='container'>
         <div className='columns is-centered'>
           <div className='column is-3 has-text-right has-text-centered-mobile'>
             <Image
@@ -15,15 +15,16 @@ export default function HeaderSection() {
               priority={true}
             />
           </div>
-          <div className='column is-4 has-text-centered-mobile'>
-            <h1 className='title'>Hildor</h1>
-            <h2 className='subtitle'>Software engineer</h2>
+          <div className='column is-5 has-text-centered-mobile'>
+            <h1 className='title'>Hildor Júnior</h1>
+            <h2 className='subtitle mb-6'>Full-Stack Software Engineer</h2>
+            <p className='mb-2'>
+              Turning ideas into software that works since 2016
+            </p>
+            <p className='is-size-7 mb-3'>
+              B.S. Information Systems • MBA in Leadership & Innovation
+            </p>
             <p>
-              🎓 Bachelor&apos;s in Information Systems
-              <br />
-              🏅 MBA in Leadership, Innovation and Management
-              <br />
-              <br />
               <a
                 target='_blank'
                 aria-label='Connect on LinkedIn'

@@ -2,13 +2,14 @@ import Script from 'next/script';
 import { lora, open_sans } from './fonts';
 import './globals.scss';
 import type { Metadata } from 'next';
-import { Navbar } from './components/navbar';
 
 export const metadata: Metadata = {
   themeColor: 'black',
-  title: 'Hildor Júnior | Senior Front-end Engineer',
-  description: 'Development and maintenance of websites, mobile apps, systems, blogs and applications.',
+  title: 'Hildor Júnior | Full-Stack Software Engineer',
+  description: 'Full-stack developer with 9+ years of experience building software across finance, healthcare, logistics, and social platforms. Sharing insights on software development, leadership, and technology.',
   category: 'technology',
+  keywords: ['software engineer', 'full-stack developer', 'web development', 'software architecture', 'agile', 'leadership', 'innovation'],
+  authors: [{ name: 'Hildor Júnior' }],
   viewport: {
     width: 'device-width',
     initialScale: 1,
@@ -23,19 +24,26 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: 'Hildor Júnior | Senior Front-end Engineer',
-    description: 'Development and maintenance of websites, mobile apps, systems, blogs and applications.',
+    title: 'Hildor Júnior | Full-Stack Software Engineer',
+    description: 'Full-stack developer with 9+ years of experience building software across finance, healthcare, logistics, and social platforms. Sharing insights on software development, leadership, and technology.',
     url: 'https://hildor.dev',
-    siteName: 'Hildor',
+    siteName: 'Hildor Júnior',
     images: [
       {
-        url: 'https://hildor.dev/_next/image?url=%2Fprofile.jpg&w=640&q=75',
+        url: 'https://hildor.dev/images/profile-2.jpg',
         width: 500,
         height: 500,
+        alt: 'Hildor Júnior - Full-Stack Software Engineer',
       },
     ],
     locale: 'en_US',
     type: 'website',
+  },
+  twitter: {
+    card: 'summary',
+    title: 'Hildor Júnior | Full-Stack Software Engineer',
+    description: 'Full-stack developer with 9+ years of experience. Sharing insights on software development, leadership, and technology.',
+    images: ['https://hildor.dev/images/profile-2.jpg'],
   },
   robots: {
     index: true,
@@ -43,8 +51,8 @@ export const metadata: Metadata = {
     nocache: true,
     googleBot: {
       index: true,
-      follow: false,
-      noimageindex: true,
+      follow: true,
+      noimageindex: false,
       'max-video-preview': -1,
       'max-image-preview': 'large',
       'max-snippet': -1,
@@ -59,7 +67,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <link rel='icon' href='/images/favicon.ico' sizes='any' />
       </head>
       <body className={`${lora.variable} ${open_sans.variable}`}>
-        <Navbar />
         {children}
         {/* Google Tag Manager */}
         <Script id='gtag' strategy='afterInteractive'>
