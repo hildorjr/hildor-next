@@ -3,6 +3,8 @@ interface GithubRepo {
   description: string;
   html_url: string;
   homepage?: string;
+  topics?: string[];
+  stargazers_count: number;
 }
 
 async function getGithubData() {
@@ -12,12 +14,16 @@ async function getGithubData() {
 
 export default async function GithubRepos() {
   const githubRepos = await getGithubData();
+  const filteredRepos = githubRepos
+    .filter((repo: GithubRepo) => repo.description)
+    .sort((a: GithubRepo, b: GithubRepo) => b.stargazers_count - a.stargazers_count);
+  
   return (
     <div className='columns is-centered' id='github'>
       <div className='column is-10'>
         <h3 className='title has-text-centered'>Github projects</h3>
         <div className='columns is-multiline'>
-          {githubRepos.map((repo: GithubRepo) => {
+          {filteredRepos.map((repo: GithubRepo) => {
             return (
               <div key={repo.name} className='column is-4 animated-column'>
                 <div className='card github-card'>
@@ -27,6 +33,15 @@ export default async function GithubRepos() {
                   <div className='card-content'>
                     <div className='content'>
                       <p>{repo.description}</p>
+                      {repo.topics && repo.topics.length > 0 && (
+                        <div className='tags'>
+                          {repo.topics.map((topic) => (
+                            <span key={topic} className='tag is-info is-light'>
+                              {topic}
+                            </span>
+                          ))}
+                        </div>
+                      )}
                     </div>
                   </div>
                   <footer className='card-footer'>
