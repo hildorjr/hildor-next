@@ -7,7 +7,7 @@ export default function HeaderSection() {
         <div className='columns is-centered'>
           <div className='column is-3 has-text-right has-text-centered-mobile'>
             <Image
-              src='/images/profile.jpg'
+              src='/images/profile-2.jpg'
               alt='Hildor'
               className='profile is-rounded'
               width={300}
