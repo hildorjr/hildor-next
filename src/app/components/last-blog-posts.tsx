@@ -64,7 +64,7 @@ function BlogPost({ post }: BlogPostProps) {
         </div>
         <div className='column'>
           <p className='post-time'>
-            <Image src='/images/profile.jpg' alt='Hildor' width={30} height={30} />
+            <Image src='/images/profile-2.jpg' alt='Hildor' width={30} height={30} />
             <span>Hildor Júnior</span>
             <span>·</span>
             <time dateTime={post.publishedAt}>{dayjs(post.publishedAt).format('MMM d, YYYY')}</time>
