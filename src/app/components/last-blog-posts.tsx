@@ -17,17 +17,17 @@ interface HashnodePost {
 async function getPosts() {
   const query = `
     {
-      user(username: "hildor") {
-        posts(page: 1, pageSize: 10) {
+      publication(host: "blog.hildor.dev") {
+        posts(first: 10) {
           edges {
             node {
               slug
               title
               brief
+              publishedAt
               coverImage {
                 url
               }
-              publishedAt
             }
           }
         }
@@ -81,7 +81,7 @@ function BlogPost({ post }: BlogPostProps) {
 
 export default async function LastBlogPosts() {
   const postsData = await getPosts();
-  const posts: any[] = postsData.data?.user.posts.edges || [];
+  const posts: any[] = postsData.data?.publication.posts.edges || [];
 
   return (
     <div className='columns is-centered' id='blog'>
