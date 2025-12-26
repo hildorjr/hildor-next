@@ -1,34 +1,97 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Hildor Júnior - Portfolio Website
+
+A modern, responsive portfolio website built with Next.js 13, showcasing my work as a Full-Stack Software Engineer.
+
+## Features
+
+- **Responsive Design** - Optimized for all devices using Bulma CSS framework
+- **Custom Mouse Cursor** - Interactive custom cursor effect for enhanced UX
+- **GitHub Integration** - Dynamically displays recent GitHub repositories
+- **Blog Integration** - Shows latest blog posts from [blog.hildor.dev](https://blog.hildor.dev)
+- **Optimized Performance** - Built with Next.js 13 App Router and optimized images with Sharp
+- **Modern Styling** - Custom SCSS with Bulma for a clean, professional look
+
+## Tech Stack
+
+- **Framework:** Next.js 13.4
+- **Language:** TypeScript
+- **Styling:** SCSS + Bulma CSS
+- **Date Handling:** Day.js
+- **Image Optimization:** Sharp
+- **Deployment Ready:** Vercel-optimized
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
+
+- Node.js 16.x or higher
+- npm, yarn, or pnpm
+
+### Installation
+
+```bash
+npm install
+```
+
+### Development
+
+Run the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) to view the site.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Build
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+Create a production build:
 
-## Learn More
+```bash
+npm run build
+```
 
-To learn more about Next.js, take a look at the following resources:
+### Production
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Start the production server:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+```bash
+npm start
+```
 
-## Deploy on Vercel
+## Project Structure
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```
+src/
+├── app/
+│   ├── components/
+│   │   ├── about-me.tsx       # About section with bio
+│   │   ├── footer.tsx         # Footer component
+│   │   ├── github-repos.tsx   # GitHub repositories display
+│   │   ├── header.tsx         # Hero section with profile
+│   │   ├── last-blog-posts.tsx # Blog posts integration
+│   │   ├── mouse-trailer.tsx  # Custom cursor effect
+│   │   └── shape-divider.tsx  # SVG shape dividers
+│   ├── fonts.ts               # Font configuration
+│   ├── globals.scss           # Global styles
+│   ├── layout.tsx             # Root layout
+│   └── page.tsx               # Home page
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## Deployment
+
+The easiest way to deploy is using [Vercel](https://vercel.com):
+
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/hildorjr/hildor-next)
+
+## Connect
+
+- **Website:** [hildor.dev](https://hildor.dev)
+- **Blog:** [blog.hildor.dev](https://blog.hildor.dev)
+- **YouTube:** [@hildordev](https://youtube.com/@hildordev)
+- **LinkedIn:** [linkedin.com/in/hildor](https://www.linkedin.com/in/hildor)
+- **GitHub:** [github.com/hildorjr](https://github.com/hildorjr)
+
+## License
+
+This project is private and proprietary.
