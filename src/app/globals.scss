@@ -16,16 +16,11 @@ $primary: $light-primary-color;
 // Global styles
 * {
   font-family: var(--font-open-sans);
+  transition: all 0.07s ease;
 }
 
 html {
   scroll-behavior: smooth;
-}
-
-// Elements with fade transition animation
-p, a, img, .title, .subtitle, .card, .animated-column {
-  animation: fade-transition .6s forwards;
-  opacity: 0;
 }
 
 // Sections
@@ -36,74 +31,17 @@ p, a, img, .title, .subtitle, .card, .animated-column {
 // Paragraph styles
 p {
   font-size: 18px;
-  animation-delay: .6s;
 }
 
 // Link styles
 a {
   display: inline-block;
-  transition: 1s;
-  animation-delay: 1s;
   font-weight: 600;
   color: $primary-color;
 }
 
-// Navbar
-.navbar {
-  transition: .2s;
-  * {
-    animation-delay: 0s;
-    transition: .2s;
-  }
-  &.is-transparent {
-    background: none;
-  }
-  &::before {
-    content: "";
-    position: fixed;
-    left: 0;
-    top: 0;
-    width: 100vw;
-    height: 101vh;
-    max-height: 0vh;
-    background-color: rgba(255,255,255, 0.55);
-  }
-  &.is-mobile-open {
-    touch-action: none;
-    &::before {
-      min-height: 101vh;
-    }
-    .navbar-menu {
-      background: none;
-      box-shadow: none;
-    }
-  }
-  .button {
-    width: 100%;
-    font-weight: 400;
-    border-radius: 0.75rem;
-  }
-  @media screen and (max-width: 1023px) {
-    .button {
-      min-height: 3.5rem;
-      padding: 0.75rem 1rem;
-    }
-
-  }
-  @media screen and (min-width: 1024px) {
-    .navbar-start {
-      justify-content: center;
-      width: 100%;
-    }
-    .button {
-      width: auto;
-    }
-  }
-}   
-
 // Icon styles
 i {
-  transition: .4s;
   opacity: .5;
 }
 
@@ -117,8 +55,15 @@ i {
   height: auto;
   width: 250px;
   border-radius: 30px;
-  animation-delay: 0s;
-  border: 2px solid rgba(lighten($primary-color, 20%), 0.5);
+  border: 1px solid $primary-color;
+  &:hover {
+    box-shadow: 2px 3px 0 0 $primary-color;
+    translate: -2px -3px;
+  }
+  &:active {
+    translate: 0 0;
+    box-shadow: none;
+  }
 }
 
 // Shape divider styles
@@ -142,12 +87,6 @@ i {
   color: $dark-color;
   font-family: var(--font-lora);
   font-size: 50px;
-  animation-delay: .2s;
-}
-
-// Subtitle styles
-.subtitle {
-  animation-delay: .4s;
 }
 
 // Custom cursor
@@ -163,7 +102,6 @@ i {
   left: 50%;
   z-index: 1;
   pointer-events: none;
-  transition: opacity .5s ease;
   opacity: 0;
 }
 body:hover > .mouse-trailer {
@@ -176,21 +114,9 @@ h1, h2, h3, h4, h5, h6, p, a, button, .card, .column {
   position: relative;
 }
 
-// Transitions and animations
-@keyframes fade-transition {
-  from {
-    opacity: 0;
-    transform: translateY(-10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0px);
-  }
-}
-
 // Main section
 .main-section {
-  background: linear-gradient($light-primary-color 30%, $primary-color);
+  background: linear-gradient($primary-color 30%, $light-primary-color);
   .title {
     color: lighten($primary-color, 70%);
   }
@@ -205,7 +131,6 @@ h1, h2, h3, h4, h5, h6, p, a, button, .card, .column {
     }
     &:hover i {
       opacity: 1;
-      transform: translateY(-2px);
     }
   }
 }
@@ -216,13 +141,6 @@ h1, h2, h3, h4, h5, h6, p, a, button, .card, .column {
   padding-top: 100px;
   h3.title {
     padding-top: 100px;
-  }
-  .animated-column {
-    @for $i from 1 through 20 {
-      &:nth-child(#{$i}) {
-        animation-delay: $i * 0.25s;
-      }
-    }
   }
   .post-card {
     padding: 20px;
@@ -266,8 +184,9 @@ h1, h2, h3, h4, h5, h6, p, a, button, .card, .column {
   }
   .post-card, .github-card {
     border-radius: 20px;
-    transition: .4s ease-in-out;
-    box-shadow: 0 0 0 1px rgba($primary-color, 0);
+    border: 1px solid $primary-color;
+    box-shadow: none;
+    position: relative;
 
     .card-header {
       box-shadow: none;
@@ -283,7 +202,12 @@ h1, h2, h3, h4, h5, h6, p, a, button, .card, .column {
       font-weight: 400;
     }
     &:hover {
-      box-shadow: 0 0 0 1px rgba($primary-color, 1);
+      box-shadow: 2px 3px 0 0 $primary-color;
+      translate: -2px -3px;
+    }
+    &:active {
+      translate: 0 0;
+      box-shadow: none;
     }
   }
   .github-card {
@@ -301,7 +225,7 @@ h1, h2, h3, h4, h5, h6, p, a, button, .card, .column {
     }
   }
   .shape-divider .shape-fill {
-    fill: $primary-color;
+    fill: $light-primary-color;
   }
 }
 

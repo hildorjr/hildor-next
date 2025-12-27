@@ -27,9 +27,6 @@ export default function Footer() {
     <footer className='footer'>
       <ShapeDivider />
       <div className='container has-text-centered'>
-        <p className='mb-6'>
-          Made with <i className='fas fa-heart has-text-danger op-1'></i> by Hildor
-        </p>
         <div className='footer-links'>
           {socialLinks.map((link) => (
             <a key={link.text} aria-label={link.label} target='_blank' href={link.href} rel='noreferrer'>
