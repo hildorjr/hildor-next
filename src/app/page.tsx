@@ -1,9 +1,8 @@
-import { CustomCursor, HeaderSection, ShapeDivider, AboutMe, GithubRepos, LastBlogPosts, Footer } from './components';
+import {HeaderSection, ShapeDivider, AboutMe, GithubRepos, LastBlogPosts, Footer } from './components';
 
 export default function Home() {
   return (
     <>
-      <CustomCursor />
       <HeaderSection />
       <section className='section projects-section' id='projects'>
         <ShapeDivider />

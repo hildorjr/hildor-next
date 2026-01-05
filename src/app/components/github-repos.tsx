@@ -21,7 +21,7 @@ export default async function GithubRepos() {
   return (
     <div className='columns is-centered' id='github'>
       <div className='column is-10'>
-        <h3 className='title has-text-centered'>Projects</h3>
+        <h3 className='title'>Projects</h3>
         <div className='columns is-multiline'>
           {filteredRepos.map((repo: GithubRepo) => {
             return (

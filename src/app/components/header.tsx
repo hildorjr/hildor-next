@@ -10,9 +10,10 @@ export default function HeaderSection() {
               src='/images/profile-2.jpg'
               alt='Hildor'
               className='profile is-rounded'
-              width={300}
-              height={300}
+              width={400}
+              height={400}
               priority={true}
+              quality={90}
             />
           </div>
           <div className='column is-5 has-text-centered-mobile'>

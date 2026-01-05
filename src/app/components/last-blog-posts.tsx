@@ -57,9 +57,9 @@ function BlogPost({ post }: BlogPostProps) {
   return (
     <a className='post-card' target='_blank' href={`https://blog.hildor.dev/${post.slug}`}>
       <div className='columns'>
-        <div className='column is-4'>
+        <div className='column is-5'>
           <figure className='image post-image'>
-            <Image src={post.coverImage.url} alt={post.title} height={200} width={381} />
+            <Image priority={false} src={post.coverImage.url} alt={post.title} height={400} width={681} />
           </figure>
         </div>
         <div className='column'>
@@ -86,7 +86,7 @@ export default async function LastBlogPosts() {
   return (
     <div className='columns is-centered' id='blog'>
       <div className='column is-10'>
-        <h3 className='title has-text-centered'>Blog posts</h3>
+        <h3 className='title'>Blog posts</h3>
         {posts.map(({ node }: { node: HashnodePost }) => (
           <BlogPost key={node.slug} post={node} />
         ))}

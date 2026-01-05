@@ -13,7 +13,7 @@ export default function AboutMe() {
   return (
     <div className='columns is-centered' id='about'>
       <div className='column is-10'>
-        <h3 className='title has-text-centered'>About me</h3>
+        <h3 className='title'>About me</h3>
         <div className='content'>
           <p>{content.intro}</p>
           <p>{content.education}</p>
