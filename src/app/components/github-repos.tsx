@@ -25,7 +25,7 @@ export default async function GithubRepos() {
         <div className='columns is-multiline'>
           {filteredRepos.map((repo: GithubRepo) => {
             return (
-              <div key={repo.name} className='column is-4 animated-column'>
+              <div key={repo.name} className='column is-6 animated-column'>
                 <div className='card github-card'>
                   <header className='card-header'>
                     <p className='card-header-title'>{repo.name}</p>

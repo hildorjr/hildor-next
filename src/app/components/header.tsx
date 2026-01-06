@@ -26,6 +26,16 @@ export default function HeaderSection() {
               B.S. Information Systems • MBA in Leadership & Innovation
             </p>
             <p>
+              <a target='_blank' aria-label='Watch on YouTube' href='https://youtube.com/@hildordev' rel='noreferrer'>
+                <span className='icon'>
+                  <i className='fab fa-youtube'></i>
+                </span>
+              </a>
+              <a target='_blank' aria-label='Browse blog posts' href='https://blog.hildor.dev'>
+                <span className='icon'>
+                  <i className='fa fa-rss-square'></i>
+                </span>
+              </a>
               <a
                 target='_blank'
                 aria-label='Connect on LinkedIn'
@@ -34,16 +44,6 @@ export default function HeaderSection() {
               >
                 <span className='icon'>
                   <i className='fab fa-linkedin-in'></i>
-                </span>
-              </a>
-              <a target='_blank' aria-label='Browse blog posts' href='https://blog.hildor.dev'>
-                <span className='icon'>
-                  <i className='fa fa-rss-square'></i>
-                </span>
-              </a>
-              <a target='_blank' aria-label='Watch on YouTube' href='https://youtube.com/@hildordev' rel='noreferrer'>
-                <span className='icon'>
-                  <i className='fab fa-youtube'></i>
                 </span>
               </a>
               <a target='_blank' aria-label='Follow on Github' href='https://github.com/hildorjr' rel='noreferrer'>
