@@ -2,6 +2,7 @@ import Script from 'next/script';
 import { lora, open_sans } from './fonts';
 import './globals.scss';
 import type { Metadata } from 'next';
+import { Analytics } from "@vercel/analytics/next"
 
 export const metadata: Metadata = {
   themeColor: 'black',
@@ -88,6 +89,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         </noscript>
         {/* Font Awesome */}
         <Script src='https://kit.fontawesome.com/2796ccc163.js' crossOrigin='anonymous' strategy='lazyOnload'></Script>
+        <Analytics />
       </body>
     </html>
   );
