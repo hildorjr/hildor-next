@@ -1,22 +1,36 @@
-// Variables
+@use 'sass:color';
+
 $primary-color: #195f6d;
-$light-primary-color: lighten($primary-color, 10%);
-$lightest-primary-color: lighten($primary-color, 65%);
-$text-color: lighten($primary-color, 75%);
+$light-primary-color: color.adjust($primary-color, $lightness: 10%);
+$lightest-primary-color: color.adjust($primary-color, $lightness: 65%);
+$text-color: color.adjust($primary-color, $lightness: 75%);
 $dark-color: #333333;
 $light-color: #555555;
 
 $link: $lightest-primary-color;
 $primary: $light-primary-color;
 
-
-// Import Bulma styles
-@import '../../node_modules/bulma/bulma.sass';
+@import 'bulma/sass/utilities/_all';
+@import 'bulma/sass/base/_all';
+@import 'bulma/sass/elements/container';
+@import 'bulma/sass/elements/content';
+@import 'bulma/sass/elements/icon';
+@import 'bulma/sass/elements/image';
+@import 'bulma/sass/elements/tag';
+@import 'bulma/sass/elements/title';
+@import 'bulma/sass/components/card';
+@import 'bulma/sass/grid/columns';
+@import 'bulma/sass/helpers/_all';
+@import 'bulma/sass/layout/section';
+@import 'bulma/sass/layout/footer';
 
 // Global styles
 * {
   font-family: var(--font-open-sans);
-  transition: all 0.07s ease;
+}
+
+a, .profile, .post-card, .github-card, .icon svg {
+  transition: box-shadow 0.07s ease, translate 0.07s ease, color 0.07s ease, opacity 0.07s ease;
 }
 
 html {
@@ -41,8 +55,11 @@ a {
 }
 
 // Icon styles
-i {
+.icon svg {
   opacity: .5;
+  display: block;
+  width: 1em;
+  height: 1em;
 }
 
 // Opacity 1 class
@@ -86,26 +103,14 @@ i {
 .title {
   color: $dark-color;
   font-family: var(--font-lora);
+}
+
+h1.title {
   font-size: 50px;
 }
 
-// Custom cursor
-.mouse-trailer {
-  background: invert($primary-color);
-  box-shadow: 0 0 50px 50px invert($primary-color);
-  width: 150px;
-  height: 150px;
-  border-radius: 50%;
-  position: fixed;
-  transform: translateX(-50%) translateY(-50%);
-  top: 0;
-  left: 50%;
-  z-index: 1;
-  pointer-events: none;
-  opacity: 0;
-}
-body:hover > .mouse-trailer {
-  opacity: .1;
+h2.title {
+  font-size: 36px;
 }
 
 // Elements with position and z-index
@@ -129,7 +134,7 @@ h1, h2, h3, h4, h5, h6, p, a, button, .card, .column {
     &:last-child {
       margin-right: 0;
     }
-    &:hover i {
+    &:hover .icon svg {
       opacity: 1;
     }
   }
@@ -139,7 +144,16 @@ h1, h2, h3, h4, h5, h6, p, a, button, .card, .column {
 .projects-section {
   background-color: $lightest-primary-color;
   padding-top: 100px;
-  h3.title {
+  .page-content {
+    margin-inline: auto;
+    width: 100%;
+  }
+  @media screen and (min-width: 1024px) {
+    .page-content {
+      width: 70%;
+    }
+  }
+  h2.title {
     padding-top: 100px;
   }
   .post-card {
@@ -150,12 +164,16 @@ h1, h2, h3, h4, h5, h6, p, a, button, .card, .column {
       margin-top: 20px;
     }
     .post-image {
-      height: 100%;
+      position: relative;
       width: 100%;
+      height: auto;
+      padding-top: 0;
+      aspect-ratio: 16 / 9;
+      overflow: hidden;
+      border-radius: 20px;
       img {
-        border-radius: 20px;
         object-fit: cover;
-        height: 100%;
+        border-radius: 20px;
       }
     }
     .title {
@@ -201,14 +219,14 @@ h1, h2, h3, h4, h5, h6, p, a, button, .card, .column {
       padding: 1rem 1.5rem;
       font-weight: 400;
     }
-    &:hover {
-      box-shadow: 2px 3px 0 0 $primary-color;
-      translate: -2px -3px;
-    }
-    &:active {
-      translate: 0 0;
-      box-shadow: none;
-    }
+  }
+  .post-card:hover, .github-card .card-footer-item:hover {
+    box-shadow: 2px 3px 0 0 $primary-color;
+    translate: -2px -3px;
+  }
+  .post-card:active, .github-card .card-footer-item:active {
+    translate: 0 0;
+    box-shadow: none;
   }
   .github-card {
     height: 100%;
@@ -240,21 +258,29 @@ h1, h2, h3, h4, h5, h6, p, a, button, .card, .column {
   .footer-links {
     display: flex;
     justify-content: center;
-    gap: 50px;
+    flex-wrap: wrap;
+    gap: 24px 32px;
     align-items: center;
     a {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
       font-size: 18px;
       text-align: center;
-      width: 100px;
+      min-width: 72px;
       &:hover {
         color: lighten($primary-color, 95%);
-        i {
+        .icon svg {
           opacity: 1;
         }
       }
       .icon {
-        display: block;
-        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: auto;
+        height: auto;
+        margin-bottom: 4px;
       }
     }
   }
@@ -273,5 +299,15 @@ h1, h2, h3, h4, h5, h6, p, a, button, .card, .column {
   .profile {
     height: 180px;
     width: auto;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  a, .profile, .post-card, .github-card, .icon svg {
+    transition: none;
   }
 }

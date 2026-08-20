@@ -4,15 +4,13 @@ export default function Home() {
   return (
     <>
       <HeaderSection />
-      <section className='section projects-section' id='projects'>
+      <section className='section projects-section'>
         <ShapeDivider />
         <div className='container'>
-          <div className='columns is-centered'>
-            <div className='column is-10'>
-              <AboutMe />
-              <GithubRepos />
-              <LastBlogPosts />
-            </div>
+          <div className='page-content'>
+            <AboutMe />
+            <GithubRepos />
+            <LastBlogPosts />
           </div>
         </div>
       </section>

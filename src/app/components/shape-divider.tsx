@@ -1,8 +1,7 @@
 export default function ShapeDivider() {
   return (
-    <div className="shape-divider">
+    <div className="shape-divider" aria-hidden="true">
       <svg
-        data-name="Layer 1"
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 1200 120"
         preserveAspectRatio="none"

@@ -1,20 +1,20 @@
-import Script from 'next/script';
 import { lora, open_sans } from './fonts';
 import './globals.scss';
-import type { Metadata } from 'next';
-import { Analytics } from "@vercel/analytics/next"
+import type { Metadata, Viewport } from 'next';
+
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  themeColor: 'black',
+};
 
 export const metadata: Metadata = {
-  themeColor: 'black',
+  metadataBase: new URL('https://hildor.dev'),
   title: 'Hildor Júnior | Full-Stack Software Engineer',
   description: 'Full-stack developer with 9+ years of experience building software across finance, healthcare, logistics, and social platforms. Sharing insights on software development, leadership, and technology.',
   category: 'technology',
   keywords: ['software engineer', 'full-stack developer', 'web development', 'software architecture', 'agile', 'leadership', 'innovation'],
   authors: [{ name: 'Hildor Júnior' }],
-  viewport: {
-    width: 'device-width',
-    initialScale: 1,
-  },
   icons: {
     icon: '/images/android-chrome-192x192.png',
     shortcut: '/images/android-chrome-512x512.png',
@@ -63,33 +63,28 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang='en'>
+    <html lang='en' data-scroll-behavior='smooth'>
       <head>
+        <link rel='preload' as='image' href='/images/profile.webp' type='image/webp' fetchPriority='high' />
         <link rel='icon' href='/images/favicon.ico' sizes='any' />
       </head>
       <body className={`${lora.variable} ${open_sans.variable}`}>
         {children}
-        {/* Google Tag Manager */}
-        <Script id='gtag' strategy='afterInteractive'>
-          {`            
-           (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-           new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-           j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-           'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-           })(window,document,'script','dataLayer','GTM-WC6G8NFP');
-          `}
-        </Script>
         <noscript>
           <iframe
             src='https://www.googletagmanager.com/ns.html?id=GTM-WC6G8NFP'
             height='0'
             width='0'
+            title='Google Tag Manager'
             style={{ display: 'none', visibility: 'hidden' }}
           ></iframe>
         </noscript>
-        {/* Font Awesome */}
-        <Script src='https://kit.fontawesome.com/2796ccc163.js' crossOrigin='anonymous' strategy='lazyOnload'></Script>
-        <Analytics />
+        {/* eslint-disable-next-line @next/next/next-script-for-ga */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(){var loaded=false;function load(){if(loaded)return;loaded=true;['pointerdown','scroll','keydown'].forEach(function(e){window.removeEventListener(e,load)});window.dataLayer=window.dataLayer||[];window.dataLayer.push({'gtm.start':Date.now(),event:'gtm.js'});var s=document.createElement('script');s.async=true;s.src='https://www.googletagmanager.com/gtm.js?id=GTM-WC6G8NFP';document.head.appendChild(s);if(!/^(localhost|127\\.0\\.0\\.1)$/.test(location.hostname)){window.va=window.va||function(){(window.vaq=window.vaq||[]).push(arguments)};var a=document.createElement('script');a.defer=true;a.src='/_vercel/insights/script.js';document.head.appendChild(a)}}['pointerdown','scroll','keydown'].forEach(function(e){window.addEventListener(e,load,{passive:true})})})();`,
+          }}
+        />
       </body>
     </html>
   );

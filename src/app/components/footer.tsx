@@ -1,24 +1,25 @@
 import ShapeDivider from './shape-divider';
+import Icon from './icons';
 
 export default function Footer() {
   const socialLinks = [
     {
       href: 'https://youtube.com/@hildordev',
       label: 'Watch on YouTube',
-      icon: 'fab fa-youtube',
+      icon: 'youtube' as const,
       text: 'YouTube',
     },
-    { href: 'https://blog.hildor.dev', label: 'Browse blog posts', icon: 'fa fa-rss-square', text: 'Blog' },
+    { href: 'https://blog.hildor.dev', label: 'Browse blog posts', icon: 'rss' as const, text: 'Blog' },
     {
       href: 'https://www.linkedin.com/in/hildor/?locale=en_US',
       label: 'Connect on LinkedIn',
-      icon: 'fab fa-linkedin-in',
+      icon: 'linkedin' as const,
       text: 'LinkedIn',
     },
     {
       href: 'https://github.com/hildorjr',
       label: 'Follow on Github',
-      icon: 'fab fa-github',
+      icon: 'github' as const,
       text: 'GitHub',
     },
   ];
@@ -29,10 +30,14 @@ export default function Footer() {
       <div className='container has-text-centered'>
         <div className='footer-links'>
           {socialLinks.map((link) => (
-            <a key={link.text} aria-label={link.label} target='_blank' href={link.href} rel='noreferrer'>
-              <span className='icon'>
-                <i className={link.icon}></i>
-              </span>
+            <a
+              key={link.text}
+              aria-label={link.label}
+              target='_blank'
+              href={link.href}
+              rel='noopener noreferrer'
+            >
+              <Icon name={link.icon} />
               {link.text}
             </a>
           ))}

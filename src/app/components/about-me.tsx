@@ -11,25 +11,23 @@ export default function AboutMe() {
   };
 
   return (
-    <div className='columns is-centered' id='about'>
-      <div className='column is-10'>
-        <h3 className='title'>About me</h3>
-        <div className='content'>
-          <p>{content.intro}</p>
-          <p>{content.education}</p>
-          <p>{content.philosophy}</p>
-          <p>
-            {content.connect}
-            <a target='_blank' href='https://blog.hildor.dev'>
-              my blog
-            </a>
-            {' and '}
-            <a target='_blank' href='https://youtube.com/@hildordev'>
-              YouTube channel
-            </a>
-            {". Let's connect!"}
-          </p>
-        </div>
+    <div id='about'>
+      <h2 className='title'>About me</h2>
+      <div className='content'>
+        <p>{content.intro}</p>
+        <p>{content.education}</p>
+        <p>{content.philosophy}</p>
+        <p>
+          {content.connect}
+          <a target='_blank' href='https://blog.hildor.dev' rel='noopener noreferrer'>
+            my blog
+          </a>
+          {' and '}
+          <a target='_blank' href='https://youtube.com/@hildordev' rel='noopener noreferrer'>
+            YouTube channel
+          </a>
+          {". Let's connect!"}
+        </p>
       </div>
     </div>
   );

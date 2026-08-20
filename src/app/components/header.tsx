@@ -1,4 +1,4 @@
-import Image from 'next/image';
+import Icon from './icons';
 
 export default function HeaderSection() {
   return (
@@ -6,50 +6,49 @@ export default function HeaderSection() {
       <div className='container'>
         <div className='columns is-centered'>
           <div className='column is-3 has-text-right has-text-centered-mobile'>
-            <Image
-              src='/images/profile-2.jpg'
-              alt='Hildor'
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src='/images/profile.webp'
+              alt='Portrait of Hildor Júnior'
               className='profile is-rounded'
-              width={400}
-              height={400}
-              priority={true}
-              quality={90}
+              width={500}
+              height={500}
+              fetchPriority='high'
+              decoding='async'
             />
           </div>
           <div className='column is-5 has-text-centered-mobile'>
             <h1 className='title'>Hildor Júnior</h1>
-            <h2 className='subtitle mb-6'>Full-Stack Software Engineer</h2>
-            <p className='mb-2'>
-              Turning ideas into software that works since 2016
-            </p>
-            <p className='is-size-7 mb-3'>
-              B.S. Information Systems • MBA in Leadership & Innovation
-            </p>
+            <p className='subtitle mb-6'>Full-Stack Software Engineer</p>
+            <p className='mb-2'>Turning ideas into software that works since 2016</p>
+            <p className='is-size-7 mb-3'>B.S. Information Systems • MBA in Leadership & Innovation</p>
             <p>
-              <a target='_blank' aria-label='Watch on YouTube' href='https://youtube.com/@hildordev' rel='noreferrer'>
-                <span className='icon'>
-                  <i className='fab fa-youtube'></i>
-                </span>
+              <a
+                target='_blank'
+                aria-label='Watch on YouTube'
+                href='https://youtube.com/@hildordev'
+                rel='noopener noreferrer'
+              >
+                <Icon name='youtube' />
               </a>
-              <a target='_blank' aria-label='Browse blog posts' href='https://blog.hildor.dev'>
-                <span className='icon'>
-                  <i className='fa fa-rss-square'></i>
-                </span>
+              <a target='_blank' aria-label='Browse blog posts' href='https://blog.hildor.dev' rel='noopener noreferrer'>
+                <Icon name='rss' />
               </a>
               <a
                 target='_blank'
                 aria-label='Connect on LinkedIn'
                 href='https://www.linkedin.com/in/hildor'
-                rel='noreferrer'
+                rel='noopener noreferrer'
               >
-                <span className='icon'>
-                  <i className='fab fa-linkedin-in'></i>
-                </span>
+                <Icon name='linkedin' />
               </a>
-              <a target='_blank' aria-label='Follow on Github' href='https://github.com/hildorjr' rel='noreferrer'>
-                <span className='icon'>
-                  <i className='fab fa-github'></i>
-                </span>
+              <a
+                target='_blank'
+                aria-label='Follow on Github'
+                href='https://github.com/hildorjr'
+                rel='noopener noreferrer'
+              >
+                <Icon name='github' />
               </a>
             </p>
           </div>

@@ -1,8 +1,5 @@
 import Image from 'next/image';
 import dayjs from 'dayjs';
-import relativeTime from 'dayjs/plugin/relativeTime';
-
-dayjs.extend(relativeTime);
 
 interface HashnodePost {
   slug: string;
@@ -14,39 +11,38 @@ interface HashnodePost {
   publishedAt: string;
 }
 
-async function getPosts() {
-  const query = `
-    {
-      publication(host: "blog.hildor.dev") {
-        posts(first: 10) {
-          edges {
-            node {
-              slug
-              title
-              brief
-              publishedAt
-              coverImage {
-                url
-              }
-            }
-          }
-        }
-      }
-    }
-  `;
-  const response = await fetch('https://gql.hashnode.com/', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      Authorization: process.env.HASHNODE_TOKEN || '',
-    },
-    body: JSON.stringify({
-      query,
-    }),
-  });
+function tagValue(xml: string, tag: string) {
+  const cdata = xml.match(new RegExp(`<${tag}[^>]*>\\s*<!\\[CDATA\\[([\\s\\S]*?)\\]\\]>`));
+  if (cdata) return cdata[1].trim();
+  const plain = xml.match(new RegExp(`<${tag}[^>]*>\\s*([^<]*)`));
+  return plain?.[1].trim() ?? '';
+}
 
-  const data = await response.json();
-  return data;
+function parseRss(xml: string): HashnodePost[] {
+  return (xml.match(/<item>[\s\S]*?<\/item>/g) ?? [])
+    .map((item) => {
+      const link = tagValue(item, 'link');
+      return {
+        slug: link.replace(/\/$/, '').split('/').pop() ?? '',
+        title: tagValue(item, 'title'),
+        brief: tagValue(item, 'description'),
+        coverImage: { url: item.match(/<enclosure[^>]*url="([^"]+)"/)?.[1] ?? '' },
+        publishedAt: tagValue(item, 'pubDate'),
+      };
+    })
+    .filter((post) => post.slug && post.title && post.coverImage.url);
+}
+
+async function getPosts(): Promise<HashnodePost[]> {
+  try {
+    const response = await fetch('https://blog.hildor.dev/rss.xml', {
+      next: { revalidate: 3600 },
+    });
+    if (!response.ok) return [];
+    return parseRss(await response.text());
+  } catch {
+    return [];
+  }
 }
 
 interface BlogPostProps {
@@ -55,21 +51,26 @@ interface BlogPostProps {
 
 function BlogPost({ post }: BlogPostProps) {
   return (
-    <a className='post-card' target='_blank' href={`https://blog.hildor.dev/${post.slug}`}>
+    <a className='post-card' target='_blank' rel='noopener noreferrer' href={`https://blog.hildor.dev/${post.slug}`}>
       <div className='columns'>
         <div className='column is-5'>
           <figure className='image post-image'>
-            <Image priority={false} src={post.coverImage.url} alt={post.title} height={400} width={681} />
+            <Image
+              src={post.coverImage.url}
+              alt={post.title}
+              fill
+              sizes='(max-width: 768px) 92vw, 420px'
+            />
           </figure>
         </div>
         <div className='column'>
           <p className='post-time'>
-            <Image src='/images/profile-2.jpg' alt='Hildor' width={30} height={30} />
+            <Image src='/images/profile-2.jpg' alt='' width={30} height={30} sizes='30px' />
             <span>Hildor Júnior</span>
             <span>·</span>
             <time dateTime={post.publishedAt}>{dayjs(post.publishedAt).format('MMM d, YYYY')}</time>
           </p>
-          <h2 className='title is-size-4'>{post.title}</h2>
+          <h3 className='title is-size-4'>{post.title}</h3>
           <div className='content'>
             <p>{post.brief}</p>
           </div>
@@ -80,17 +81,16 @@ function BlogPost({ post }: BlogPostProps) {
 }
 
 export default async function LastBlogPosts() {
-  const postsData = await getPosts();
-  const posts: any[] = postsData.data?.publication.posts.edges || [];
+  const posts = await getPosts();
+
+  if (posts.length === 0) return null;
 
   return (
-    <div className='columns is-centered' id='blog'>
-      <div className='column is-10'>
-        <h3 className='title'>Blog posts</h3>
-        {posts.map(({ node }: { node: HashnodePost }) => (
-          <BlogPost key={node.slug} post={node} />
-        ))}
-      </div>
+    <div id='blog'>
+      <h2 className='title'>Blog posts</h2>
+      {posts.map((post) => (
+        <BlogPost key={post.slug} post={post} />
+      ))}
     </div>
   );
 }
